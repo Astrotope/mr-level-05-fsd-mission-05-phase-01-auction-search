@@ -2,8 +2,8 @@
 
 ---
 
-## [If you do not have a running installation of MongoDB]
-## You can start a local MongoDB instance by using the following commands:
+### [If you do not have a running installation of MongoDB]
+### You can start a local MongoDB instance by using the following commands:
 
 1. Start MongoDB container:
 ```bash
@@ -20,10 +20,10 @@ docker-compose down
 docker-compose restart
 ```
 
-## Environment Variables are set in the .env file
-## You may need to change these to match your MongoDB installation (if not using Docker)
+### Environment Variables are set in the .env file
+### You may need to change these to match your MongoDB installation (if not using Docker)
 
-### Required Variables
+#### Required Variables
 ```bash
 MONGO_USERNAME=admin                    # MongoDB username
 MONGO_PASSWORD=password                 # MongoDB password
@@ -34,46 +34,46 @@ DB_NAME=auction                         # Database name for the application
 COLLECTION_NAME=auctionItems            # Collection name for auction items
 ```
 
-## CLI Tool Usage
+### CLI Tool Usage
 
-### Basic Command
+#### Basic Command
 ```bash
 node src/seed.js -f datasets/auction-items.json --verbose
 ```
 
-### CLI Options
+#### CLI Options
 - `-f, --file <path>`: Path to the JSON file containing auction items (default: "auction_items.json")
 - `--verbose`: Display environment variables and additional information
 - `-v, --version`: Display version information
 - `-h, --help`: Display help information
 
-## Testing
+### Testing
 
-### Running Tests
+#### Running Tests
 
-#### Unit Tests
+##### Unit Tests
 ```bash
 npm test
 ```
 
-#### Integration Tests Only
+##### Integration Tests Only
 ```bash
 npm run test:integration
 ```
 
-#### All Tests (Unit + Integration)
+##### All Tests (Unit + Integration)
 ```bash
 npm run test:all
 ```
 
-### Integration Test Requirements
+#### Integration Test Requirements
 1. Docker must be installed and running
 2. MongoDB image must be pulled:
 ```bash
 docker pull mongo:latest
 ```
 
-## Project Structure
+### Project Structure
 ```
 auction-search/cli-tool/
 ├── src/                            # Source code directory
@@ -92,7 +92,7 @@ auction-search/cli-tool/
 └── mongo-init.js                   # MongoDB initialization script
 ```
 
-## Package.json Scripts
+### Package.json Scripts
 ```json
 {
   "scripts": {
@@ -105,9 +105,9 @@ auction-search/cli-tool/
 }
 ```
 
-## Environment Variables
+### Environment Variables
 
-### Required Variables
+#### Required Variables
 ```bash
 MONGO_USERNAME=admin           # MongoDB username
 MONGO_PASSWORD=password        # MongoDB password
@@ -118,13 +118,13 @@ DB_NAME=auction               # Database name for the application
 COLLECTION_NAME=auctionItems  # Collection name for auction items
 ```
 
-### Notes on Environment Variables
+#### Notes on Environment Variables
 - All variables are required for the application to run
 - `MONGO_PASSWORD` is masked in verbose output for security
 - URI is constructed with credentials during runtime
 - Integration tests use a separate container and don't require these variables
 
-### Integration Test Documentation
+#### Integration Test Documentation
 
 The integration tests (seed.integration.test.js) cover:
 
@@ -141,9 +141,9 @@ The integration tests (seed.integration.test.js) cover:
    - Verifying only new data exists after reseeding
 
 
-# Unit Tests Documentation
+### Unit Tests Documentation
 
-## Environment Variables Loader Tests
+#### Environment Variables Loader Tests
 
 Tests the `loadEnv()` function which manages environment variable loading and validation:
 
@@ -164,7 +164,7 @@ Tests the `loadEnv()` function which manages environment variable loading and va
    - Verifies correct error messages for missing variables
    - Ensures proper formatting of multiple missing variables
 
-## Command Line Options Tests
+#### Command Line Options Tests
 
 Tests the `parseArgs()` function which handles CLI argument parsing:
 
@@ -188,7 +188,7 @@ Tests the `parseArgs()` function which handles CLI argument parsing:
    - Verifies password masking in output
    - Checks formatting of environment information
 
-## JSON File Reader Tests
+#### JSON File Reader Tests
 
 Tests the `readFile()` function for JSON file handling:
 
@@ -202,7 +202,7 @@ Tests the `readFile()` function for JSON file handling:
    - Handles non-existent files
    - Proper error messages for different scenarios
 
-## MongoDB Seeder Tests (Mocked)
+#### MongoDB Seeder Tests (Mocked)
 
 Tests the `seedMongoDB()` function using mocked MongoDB client:
 

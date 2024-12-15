@@ -122,7 +122,7 @@ Ran all test suites.
 
 ---
 
-### Step 02 - Create Tests & Failing Code
+### Step 02 - Create First Test & Failing Code for First Method
 
 - Test Code - seed.test.js
 
@@ -933,7 +933,7 @@ Ran all test suites.
 ---
 
 
-### Step 05 - Refactor Passing Code and Tests
+### Step 05 - Create MongoDB Integration Tests
 
 - Test Code - seed.integration.test.js
 
