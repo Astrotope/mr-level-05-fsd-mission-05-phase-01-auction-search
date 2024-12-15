@@ -124,7 +124,7 @@ COLLECTION_NAME=auctionItems  # Collection name for auction items
 - URI is constructed with credentials during runtime
 - Integration tests use a separate container and don't require these variables
 
-#### Integration Test Documentation
+### Integration Test Documentation
 
 The integration tests (seed.integration.test.js) cover:
 
