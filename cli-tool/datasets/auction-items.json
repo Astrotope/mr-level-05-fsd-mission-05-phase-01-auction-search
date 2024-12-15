@@ -1,0 +1,237 @@
+[
+    {
+      "title": "Vintage Wooden Table",
+      "description": "A beautifully crafted wooden table, perfect for your dining room.",
+      "start_price": 50,
+      "reserve_price": 100
+    },
+    {
+      "title": "Mountain Bike",
+      "description": "A durable mountain bike suitable for all terrains.",
+      "start_price": 150,
+      "reserve_price": 300
+    },
+    {
+      "title": "Apple iPhone 12",
+      "description": "A slightly used iPhone 12 with 64GB storage in excellent condition.",
+      "start_price": 400,
+      "reserve_price": 600
+    },
+    {
+      "title": "Sony PlayStation 5",
+      "description": "The latest PS5 console, barely used and in original packaging.",
+      "start_price": 300,
+      "reserve_price": 500
+    },
+    {
+      "title": "Kitchen Blender",
+      "description": "High-performance kitchen blender with multiple speed settings.",
+      "start_price": 20,
+      "reserve_price": 50
+    },
+    {
+      "title": "Antique Wall Clock",
+      "description": "A vintage wall clock from the 19th century, still working.",
+      "start_price": 100,
+      "reserve_price": 250
+    },
+    {
+      "title": "Gaming Laptop",
+      "description": "Powerful gaming laptop with high-end graphics and fast performance.",
+      "start_price": 800,
+      "reserve_price": 1200
+    },
+    {
+      "title": "Leather Jacket",
+      "description": "Stylish leather jacket, barely worn, size M.",
+      "start_price": 50,
+      "reserve_price": 150
+    },
+    {
+      "title": "Garden Tools Set",
+      "description": "Complete garden tools set with everything you need for your garden.",
+      "start_price": 30,
+      "reserve_price": 70
+    },
+    {
+      "title": "LED TV 55 inch",
+      "description": "Smart LED TV, 55 inches, excellent picture quality.",
+      "start_price": 200,
+      "reserve_price": 400
+    },
+    {
+      "title": "Drone with Camera",
+      "description": "High-performance drone with a 4K camera for stunning aerial shots.",
+      "start_price": 250,
+      "reserve_price": 450
+    },
+    {
+      "title": "Electric Guitar",
+      "description": "A premium electric guitar in great condition with free accessories.",
+      "start_price": 200,
+      "reserve_price": 350
+    },
+    {
+      "title": "Coffee Maker",
+      "description": "Automatic coffee maker with built-in grinder and milk frother.",
+      "start_price": 80,
+      "reserve_price": 150
+    },
+    {
+      "title": "Men's Wrist Watch",
+      "description": "Elegant men's wristwatch with a leather strap.",
+      "start_price": 100,
+      "reserve_price": 200
+    },
+    {
+      "title": "Baby Stroller",
+      "description": "Lightweight and foldable baby stroller, perfect for travel.",
+      "start_price": 50,
+      "reserve_price": 100
+    },
+    {
+      "title": "Snowboard",
+      "description": "Durable snowboard, ideal for beginners and professionals.",
+      "start_price": 100,
+      "reserve_price": 250
+    },
+    {
+      "title": "Fishing Rod",
+      "description": "A high-quality fishing rod with a spinning reel included.",
+      "start_price": 30,
+      "reserve_price": 75
+    },
+    {
+      "title": "Smartwatch",
+      "description": "Feature-rich smartwatch with health and fitness tracking.",
+      "start_price": 120,
+      "reserve_price": 250
+    },
+    {
+      "title": "Bluetooth Speaker",
+      "description": "Portable Bluetooth speaker with excellent sound quality.",
+      "start_price": 40,
+      "reserve_price": 90
+    },
+    {
+      "title": "Camping Tent",
+      "description": "Spacious and durable camping tent for up to 4 people.",
+      "start_price": 70,
+      "reserve_price": 150
+    },
+    {
+      "title": "Electric Scooter",
+      "description": "Eco-friendly electric scooter with a 20km range.",
+      "start_price": 250,
+      "reserve_price": 400
+    },
+    {
+      "title": "Perfume Set",
+      "description": "Luxury perfume set with three different fragrances.",
+      "start_price": 30,
+      "reserve_price": 70
+    },
+    {
+      "title": "Photography Camera",
+      "description": "High-resolution DSLR camera with a lens kit included.",
+      "start_price": 400,
+      "reserve_price": 700
+    },
+    {
+      "title": "Men's Formal Shoes",
+      "description": "Comfortable and stylish formal shoes, size 10.",
+      "start_price": 40,
+      "reserve_price": 90
+    },
+    {
+      "title": "Vintage Vinyl Records",
+      "description": "Collection of classic vinyl records in excellent condition.",
+      "start_price": 50,
+      "reserve_price": 120
+    },
+    {
+      "title": "Home Theater System",
+      "description": "Complete home theater system with surround sound.",
+      "start_price": 300,
+      "reserve_price": 600
+    },
+    {
+      "title": "Laptop Backpack",
+      "description": "Durable and water-resistant laptop backpack with multiple compartments.",
+      "start_price": 20,
+      "reserve_price": 50
+    },
+    {
+      "title": "Electric Kettle",
+      "description": "Stainless steel electric kettle with fast boiling technology.",
+      "start_price": 15,
+      "reserve_price": 40
+    },
+    {
+      "title": "Barbecue Grill",
+      "description": "Portable barbecue grill, perfect for outdoor parties.",
+      "start_price": 50,
+      "reserve_price": 120
+    },
+    {
+      "title": "Women's Handbag",
+      "description": "Stylish women's handbag, perfect for daily use.",
+      "start_price": 30,
+      "reserve_price": 80
+    },
+    {
+      "title": "Road Bike",
+      "description": "Lightweight road bike with a comfortable design.",
+      "start_price": 200,
+      "reserve_price": 400
+    },
+    {
+      "title": "3D Printer",
+      "description": "High-precision 3D printer for home or office use.",
+      "start_price": 300,
+      "reserve_price": 600
+    },
+    {
+      "title": "Electric Lawn Mower",
+      "description": "Powerful electric lawn mower for easy lawn maintenance.",
+      "start_price": 150,
+      "reserve_price": 300
+    },
+    {
+      "title": "Set of Books",
+      "description": "A collection of best-selling novels in excellent condition.",
+      "start_price": 25,
+      "reserve_price": 60
+    },
+    {
+      "title": "Smartphone Case",
+      "description": "Durable and stylish case for iPhone 12.",
+      "start_price": 10,
+      "reserve_price": 25
+    },
+    {
+      "title": "Digital Piano",
+      "description": "High-quality digital piano with weighted keys and multiple functions.",
+      "start_price": 500,
+      "reserve_price": 900
+    },
+    {
+      "title": "Pet Carrier",
+      "description": "Comfortable and portable pet carrier for small dogs and cats.",
+      "start_price": 30,
+      "reserve_price": 70
+    },
+    {
+      "title": "Desk Chair",
+      "description": "Ergonomic desk chair with adjustable height and lumbar support.",
+      "start_price": 60,
+      "reserve_price": 150
+    },
+    {
+      "title": "Yoga Mat",
+      "description": "Non-slip yoga mat with extra cushioning for comfort.",
+      "start_price": 15,
+      "reserve_price": 35
+    }
+  ]
+  
