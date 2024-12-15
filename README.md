@@ -17,7 +17,7 @@ Located in the [`cli-tool`](./cli-tool) directory, this tool provides functional
 
 #### Documentation
 - [Development Notes](./cli-tool/DEV_NOTES.md) - Setup, configuration, and usage guide
-- [Testing Documentation](./cli-tool/TESTING_LOG.md) - Detailed testing implementation and results
+- [Testing Documentation](./cli-tool/TESTING_LOG.md) - Detailed TDD iterations and results
 
 #### Quick Start
 1. Set up environment variables (see DEV_NOTES.md)

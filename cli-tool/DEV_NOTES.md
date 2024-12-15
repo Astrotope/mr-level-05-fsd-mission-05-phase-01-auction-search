@@ -19,6 +19,7 @@ docker-compose down
 ```bash
 docker-compose restart
 ```
+---
 
 ### Environment Variables are set in the .env file
 ### You may need to change these to match your MongoDB installation (if not using Docker)
@@ -33,6 +34,7 @@ MONGO_URI=mongodb://localhost:27017     # MongoDB connection URI
 DB_NAME=auction                         # Database name for the application
 COLLECTION_NAME=auctionItems            # Collection name for auction items
 ```
+---
 
 ### CLI Tool Usage
 
@@ -46,6 +48,8 @@ node src/seed.js -f datasets/auction-items.json --verbose
 - `--verbose`: Display environment variables and additional information
 - `-v, --version`: Display version information
 - `-h, --help`: Display help information
+
+---
 
 ### Testing
 
@@ -73,6 +77,8 @@ npm run test:all
 docker pull mongo:latest
 ```
 
+---
+
 ### Project Structure
 ```
 auction-search/cli-tool/
@@ -92,6 +98,8 @@ auction-search/cli-tool/
 └── mongo-init.js                   # MongoDB initialization script
 ```
 
+---
+
 ### Package.json Scripts
 ```json
 {
@@ -104,6 +112,8 @@ auction-search/cli-tool/
   }
 }
 ```
+
+---
 
 ### Environment Variables
 
@@ -124,6 +134,8 @@ COLLECTION_NAME=auctionItems  # Collection name for auction items
 - URI is constructed with credentials during runtime
 - Integration tests use a separate container and don't require these variables
 
+---
+
 ### Integration Test Documentation
 
 The integration tests (seed.integration.test.js) cover:
@@ -140,6 +152,7 @@ The integration tests (seed.integration.test.js) cover:
    - Clearing existing data before new seeds
    - Verifying only new data exists after reseeding
 
+---
 
 ### Unit Tests Documentation
 
