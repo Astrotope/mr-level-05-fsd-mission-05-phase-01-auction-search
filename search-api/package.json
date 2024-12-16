@@ -1,0 +1,31 @@
+{
+  "name": "search-api",
+  "version": "1.0.0",
+  "description": "Auction items search API",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "create-indexes": "node prisma/migrations/create-text-indexes.js",
+    "test-connection": "node scripts/test-connection.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^6.0.1",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongodb": "^6.12.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.9",
+    "prisma": "^6.0.1",
+    "supertest": "^7.0.0"
+  }
+}
