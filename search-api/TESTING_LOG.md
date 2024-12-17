@@ -508,33 +508,176 @@ Ran all test suites.
 
 ### Step 04 - Update Jest Test Suite - Add ToDo's for all primary feature, additional features, and edge cases for features
 
+- Setup Commands
+
+```bash 
+# Spin up MongoDB, create database and collection, and seed data
+cd cli-tool
+docker compose up -d # Spin up MongoDB
+node src/seed.js -f datasets/auction-items.json --verbose # Seed MongoDB
+
+# run tests
+npm test # Run tests
+cd ..
+
+# Spin up Qdrant, setup Qdrant collection, generate embeddings
+cd search-api
+docker compose up -d # Spin up Qdrant
+npm run create-indexes # Create text indexes in MongoDB
+npm run setup-qdrant # Setup Qdrant collection
+npm run generate-embeddings # Generate aution item embeddings in Qdrant using Google Generative AI text-embedding-004 model
+
+# Run tests and start server
+npm test # Run tests
+npm start # Start the server
+```
+
+- Jest Test Cases
+
+```bash
+    Basic Search Functionality
+      ✓ should search items by query (1565 ms)
+      ✓ should return 400 if query is missing (6 ms)
+      ✓ should search in both title and description (1107 ms)
+    Search Mode Tests
+      ✓ should default to semantic search when m parameter is not provided (455 ms)
+      ✓ should use semantic search when m=semantic (654 ms)
+      ✓ should use MongoDB text search when m=mongo (52 ms)
+      ✓ should use semantic search for invalid m parameter values (392 ms)
+      ✓ should return correct mode in response for semantic search (1101 ms)
+      ✓ should return correct mode in response for mongo search (15 ms)
+    Result Limit Tests
+      ✓ should default to 10 results when n parameter is not provided (810 ms)
+      ✓ should limit results to n items when n is a valid positive number (381 ms)
+      ✓ should default to 10 results when n is zero (746 ms)
+      ✓ should default to 10 results when n is negative (409 ms)
+      ✓ should default to 10 results when n is not a number (384 ms)
+      ✓ should handle large n values gracefully (440 ms)
+      ✓ should return correct count matching actual results length (1985 ms)
+    Edge Cases
+      ✓ should handle empty string query (4 ms)
+      ✓ should handle very long queries (454 ms)
+      ✓ should handle special characters in queries (2049 ms)
+      ✓ should handle queries with only numbers (1641 ms)
+      ✓ should handle queries with only spaces (2 ms)
+      ✓ should handle multiple concurrent requests (1303 ms)
+    Combined Parameter Tests
+      ✓ should correctly combine m and n parameters for semantic search (439 ms)
+      ✓ should correctly combine m and n parameters for mongo search (8 ms)
+      ✓ should maintain consistent result format between search modes (394 ms)
+      ✓ should include similarity scores in both search modes (1218 ms)
+    Performance Tests
+      ✎ todo should respond within acceptable time limit for semantic search
+      ✎ todo should respond within acceptable time limit for mongo search
+      ✎ todo should handle large result sets efficiently
+    Error Handling
+      ✎ todo should handle database connection errors gracefully
+      ✎ todo should handle Qdrant connection errors gracefully
+      ✎ todo should handle embedding generation errors gracefully
+      ✎ todo should return appropriate error messages for each failure case
+      ✎ todo should not expose internal error details in response
+    Security Tests
+      ✎ todo should sanitize query parameters to prevent injection
+      ✎ todo should handle malformed query parameters safely
+      ✎ todo should validate and sanitize n parameter
+      ✎ todo should validate and sanitize m parameter
+```
+
+- Test Results
+
+```bash
+npm test
+
+> search-api@1.0.0 test
+> jest
+
+[Lots of console logging]...
+
+ PASS  test/search.test.js (23.745 s)
+  Search API
+    Basic Search Functionality
+      ✓ should search items by query (1545 ms)
+      ✓ should return 400 if query is missing (4 ms)
+      ✓ should search in both title and description (1126 ms)
+    Search Mode Tests
+      ✓ should default to semantic search when m parameter is not provided (391 ms)
+      ✓ should use semantic search when m=semantic (744 ms)
+      ✓ should use MongoDB text search when m=mongo (33 ms)
+      ✓ should use semantic search for invalid m parameter values (393 ms)
+      ✓ should return correct mode in response for semantic search (1176 ms)
+      ✓ should return correct mode in response for mongo search (10 ms)
+    Result Limit Tests
+      ✓ should default to 10 results when n parameter is not provided (738 ms)
+      ✓ should limit results to n items when n is a valid positive number (410 ms)
+      ✓ should default to 10 results when n is zero (689 ms)
+      ✓ should default to 10 results when n is negative (431 ms)
+      ✓ should default to 10 results when n is not a number (408 ms)
+      ✓ should handle large n values gracefully (399 ms)
+      ✓ should return correct count matching actual results length (2067 ms)
+    Edge Cases
+      ✓ should handle empty string query (4 ms)
+      ✓ should handle very long queries (401 ms)
+      ✓ should handle special characters in queries (2178 ms)
+      ✓ should handle queries with only numbers (1974 ms)
+      ✓ should handle queries with only spaces (3 ms)
+      ✓ should handle multiple concurrent requests (1317 ms)
+    Combined Parameter Tests
+      ✓ should correctly combine m and n parameters for semantic search (468 ms)
+      ✓ should correctly combine m and n parameters for mongo search (11 ms)
+      ✓ should maintain consistent result format between search modes (409 ms)
+      ✓ should include similarity scores in both search modes (1223 ms)
+    Performance Tests
+      ✎ todo should respond within acceptable time limit for semantic search
+      ✎ todo should respond within acceptable time limit for mongo search
+      ✎ todo should handle large result sets efficiently
+    Error Handling
+      ✎ todo should handle database connection errors gracefully
+      ✎ todo should handle Qdrant connection errors gracefully
+      ✎ todo should handle embedding generation errors gracefully
+      ✎ todo should return appropriate error messages for each failure case
+      ✎ todo should not expose internal error details in response
+    Security Tests
+      ✎ todo should sanitize query parameters to prevent injection
+      ✎ todo should handle malformed query parameters safely
+      ✎ todo should validate and sanitize n parameter
+      ✎ todo should validate and sanitize m parameter
+
+-----------------|---------|----------|---------|---------|-------------------
+File             | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
+-----------------|---------|----------|---------|---------|-------------------
+All files        |   83.09 |    82.35 |   81.81 |    82.6 |
+ src             |   56.25 |        0 |       0 |   56.25 |
+  app.js         |   81.81 |      100 |       0 |   81.81 | 16-17
+  server.js      |       0 |        0 |       0 |       0 | 1-7
+ src/config      |       0 |        0 |       0 |       0 |
+  db.js          |       0 |        0 |       0 |       0 |
+ src/controllers |   89.36 |    93.33 |     100 |   88.88 |
+  search.js      |   89.36 |    93.33 |     100 |   88.88 | 18,23-24,122-123
+ src/lib         |     100 |      100 |     100 |     100 |
+  prisma.js      |     100 |      100 |     100 |     100 |
+ src/routes      |     100 |      100 |     100 |     100 |
+  apiRoutes.js   |     100 |      100 |     100 |     100 |
+-----------------|---------|----------|---------|---------|-------------------
+Test Suites: 1 passed, 1 total
+Tests:       12 todo, 26 passed, 38 total
+Snapshots:   0 total
+Time:        25.103 s
+Ran all test suites.
+```
+
 - Test Code - ./test/search.test.js
 
-```javascript
-// test/search.test.js
-const request = require('supertest');
-const app = require('../src/app');
+- Search Controller Code - ./src/controllers/search.js
 
-describe('Search API', () => {
+- Qdrant docker-compose - ./docker-compose.yml
 
-  test('should search items by query', async () => {
-    const response = await request(app)
-      .get('/api/search')
-      .query({ q: 'wooden' });
+- Qdrant setup script - ./scripts/setup-qdrant.js
 
-    expect(response.status).toBe(200);
-    expect(response.body.items).toBeDefined();
-    expect(response.body.items.length).toBe(1);
-    expect(response.body.items[0].title).toContain('Wooden');
-  });
-  
-  test.todo('should return 400 if query is missing');
-  test.todo('should search in both title and description');
-  test.todo('should search in title only');
-  test.todo('should search in description only');
-  test.todo('should search in title and description');
-  test.todo('should return 404 if no items found');
-  test.todo('should return 500 if server error');
+- Qdrant generate embeddings script - ./scripts/generate-embeddings.js
 
-});
-```
+- Example Search URL (MongoDB) - http://localhost:3337/api/search?q=wooden%20table&n=20&m=mongo
+
+- Example Search URL (Semantic) - http://localhost:3337/api/search?q=wooden%20table&n=20&m=semantic
+
+- Bash commands to setup Qdrant and generate embeddings 
+

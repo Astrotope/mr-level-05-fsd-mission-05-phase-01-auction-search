@@ -192,7 +192,6 @@ GET http://localhost:3337/api/search?q=wooden%20table&n=20&m=semantic
 ```
 
 ###Testing Coverage
-
 The project maintains high test coverage with comprehensive test suites for both components:
 
 - CLI Tool: Unit and integration tests

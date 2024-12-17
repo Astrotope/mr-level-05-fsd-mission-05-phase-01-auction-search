@@ -1,3 +1,6 @@
+# Docker volumes for qdrant
+search-api/volumes/
+
 # Dependencies
 node_modules/
 package-lock.json
