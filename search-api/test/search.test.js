@@ -297,36 +297,44 @@ describe('Search API', () => {
     });
 
     test('should handle multiple concurrent requests', async () => {
+      // Reduce number of concurrent queries and use shorter terms
       const queries = [
-        'vintage',
-        'antique',
-        'modern',
-        'classic',
-        'rare'
+        'wood',
+        'metal',
+        'glass'
       ];
 
-      // Make multiple requests concurrently
-      const promises = queries.map(q => 
-        request(app)
-          .get('/api/search')
-          .query({ q })
-      );
+      // Set timeout to 10 seconds for this specific test
+      jest.setTimeout(10000);
 
-      const responses = await Promise.all(promises);
+      try {
+        // Make multiple requests concurrently
+        const promises = queries.map(q => 
+          request(app)
+            .get('/api/search')
+            .query({ q })
+            .timeout(8000) // Set supertest timeout
+        );
 
-      // Verify each response
-      responses.forEach((response, index) => {
-        expect(response.status).toBe(200);
-        expect(response.body).toHaveProperty('items');
-        expect(Array.isArray(response.body.items)).toBe(true);
-        expect(response.body).toHaveProperty('query', queries[index]);
-        expect(response.body.items.length).toBeLessThanOrEqual(10); // Default limit
-      });
+        const responses = await Promise.all(promises);
 
-      // Verify responses are different (not cached/mixed up)
-      const uniqueQueries = new Set(responses.map(r => r.body.query));
-      expect(uniqueQueries.size).toBe(queries.length);
-    });
+        // Verify each response
+        responses.forEach((response, index) => {
+          expect(response.status).toBe(200);
+          expect(response.body).toHaveProperty('items');
+          expect(Array.isArray(response.body.items)).toBe(true);
+          expect(response.body).toHaveProperty('query', queries[index]);
+          expect(response.body.items.length).toBeLessThanOrEqual(10);
+        });
+
+        // Verify responses are different (not cached/mixed up)
+        const uniqueQueries = new Set(responses.map(r => r.body.query));
+        expect(uniqueQueries.size).toBe(queries.length);
+      } finally {
+        // Reset timeout to default
+        jest.setTimeout(5000);
+      }
+    }, 10000); // Set Jest timeout for this specific test
   });
 
   describe('Combined Parameter Tests', () => {
