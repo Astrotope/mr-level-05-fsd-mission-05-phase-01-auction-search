@@ -419,7 +419,8 @@ curl -X GET -G \
     "count": 20,
     "query": "trike",
     "mode": "semantic"
-}```
+}
+```
 
 ###Testing Coverage
 
