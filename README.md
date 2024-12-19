@@ -422,7 +422,7 @@ curl -X GET -G \
 }
 ```
 
-###Testing Coverage
+### Testing Coverage
 
 The project maintains high test coverage with comprehensive test suites for both components:
 
