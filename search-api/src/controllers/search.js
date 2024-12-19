@@ -48,7 +48,12 @@ async function performMongoSearch(q, limit) {
     });
 
     return results.map(item => ({
-        ...item
+        _id: item._id.$oid,
+        title: item.title,
+        description: item.description,
+        start_price: item.start_price,
+        reserve_price: item.reserve_price,
+        score: item.score
     }));
 }
 
@@ -79,7 +84,11 @@ async function performSemanticSearch(q, limit) {
 
         return searchResults
             .map(result => ({
-                ...documentMap.get(result.payload.mongo_id),
+                _id: result.payload.mongo_id,
+                title: documentMap.get(result.payload.mongo_id).title,
+                description: documentMap.get(result.payload.mongo_id).description,
+                start_price: documentMap.get(result.payload.mongo_id).start_price,
+                reserve_price: documentMap.get(result.payload.mongo_id).reserve_price,
                 score: result.score
             }))
             .filter(item => item._id);

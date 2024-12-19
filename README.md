@@ -179,12 +179,12 @@ npm start # Start the server
 
 ### API Documentation
 
-- MongoDB Text Search:
+- MongoDB Text Search (only finds textual matches with steming, trike, trikes, etc...):
 
   - API endpoint for MongoDB text search:
 
 ```text
-GET http://localhost:3337/api/search?q=wooden%20table&n=20&m=mongo
+GET http://localhost:3337/api/search?q=trike&n=20&m=mongo
 ```
 
 - cURL Example:
@@ -192,7 +192,7 @@ GET http://localhost:3337/api/search?q=wooden%20table&n=20&m=mongo
 ```bash
 curl -X GET -G \
   "http://localhost:3337/api/search" \
-  -d "q=wooden+table" \
+  -d "q=trike" \
   -d "n=20" \
   -d "m=mongo" | jq '.'
 ```
@@ -204,164 +204,48 @@ curl -X GET -G \
 {
     "items": [
         {
-            "_id": {
-                "$oid": "6761bd59c054e39e35658248"
-            },
-            "title": "Vintage Wooden Table",
-            "description": "A beautifully crafted wooden table, perfect for your dining room.",
+            "_id": "6761bd59c054e39e356582ba",
+            "title": "Children's Trike",
+            "description": "Fun and safe tricycle for toddlers, with a sturdy frame and basket.",
+            "start_price": 60,
+            "reserve_price": 120,
+            "score": 0.75
+        },
+        {
+            "_id": "6761bd59c054e39e3565827a",
+            "title": "Kid's Training Trike",
+            "description": "A colorful and stable three-wheeled ride for young learners.",
             "start_price": 50,
-            "reserve_price": 100,
-            "score": 2.4761904761904763
+            "reserve_price": 120,
+            "score": 0.6666666666666666
         },
         {
-            "_id": {
-                "$oid": "6761bd59c054e39e356582cc"
-            },
-            "title": "Acacia Nesting Tables",
-            "description": "Set of three stylish nesting tables crafted from acacia hardwood.",
-            "start_price": 180,
-            "reserve_price": 400,
-            "score": 1.2291666666666665
-        },
-        {
-            "_id": {
-                "$oid": "6761bd59c054e39e356582e2"
-            },
-            "title": "Walnut Veneer Coffee Table",
-            "description": "Sophisticated coffee table with a rich walnut veneer finish.",
-            "start_price": 180,
-            "reserve_price": 400,
-            "score": 1.1964285714285714
-        },
-        {
-            "_id": {
-                "$oid": "6761bd59c054e39e356582df"
-            },
-            "title": "Polished Teak Side Table",
-            "description": "Compact teakwood side table with a sleek polished surface.",
-            "start_price": 200,
-            "reserve_price": 400,
-            "score": 1.1964285714285714
-        },
-        {
-            "_id": {
-                "$oid": "6761bd59c054e39e356582c3"
-            },
-            "title": "Plywood Nordic Dining Table",
-            "description": "Minimalist dining table with a smooth plywood surface and contemporary design.",
-            "start_price": 220,
-            "reserve_price": 450,
-            "score": 1.1875
-        },
-        {
-            "_id": {
-                "$oid": "6761bd59c054e39e356582ca"
-            },
-            "title": "Polished Burlwood Accent Table",
-            "description": "Unique table crafted from burlwood with natural knots and polished finish.",
-            "start_price": 250,
-            "reserve_price": 500,
-            "score": 1.1875
-        },
-        {
-            "_id": {
-                "$oid": "6761bd59c054e39e356582d1"
-            },
-            "title": "Industrial Pallet Coffee Table",
-            "description": "Repurposed pallet table with a raw, industrial look and caster wheels.",
-            "start_price": 120,
-            "reserve_price": 300,
-            "score": 1.1875
-        },
-        {
-            "_id": {
-                "$oid": "6761bd59c054e39e356582ce"
-            },
-            "title": "Reclaimed Barn Door Table",
-            "description": "Rustic dining table created from a reclaimed barn door with a natural finish.",
-            "start_price": 450,
-            "reserve_price": 900,
-            "score": 1.1805555555555556
-        },
-        {
-            "_id": {
-                "$oid": "6761bd59c054e39e356582bf"
-            },
-            "title": "Handcrafted Rimu Coffee Table",
-            "description": "A stunning low-profile coffee table made from recovered rimu timber.",
-            "start_price": 180,
-            "reserve_price": 350,
-            "score": 1.1805555555555556
-        },
-        {
-            "_id": {
-                "$oid": "6761bd59c054e39e356582c7"
-            },
-            "title": "Driftwood-Inspired Coffee Table",
-            "description": "Artistic coffee table designed to resemble natural driftwood for a beachy aesthetic.",
-            "start_price": 150,
-            "reserve_price": 350,
-            "score": 1.1805555555555556
-        },
-        {
-            "_id": {
-                "$oid": "6761bd59c054e39e356582bd"
-            },
-            "title": "Rustic Pine Farmhouse Table",
-            "description": "A charming farmhouse dining table crafted from solid pine with natural grain details.",
-            "start_price": 150,
-            "reserve_price": 300,
-            "score": 1.175
-        },
-        {
-            "_id": {
-                "$oid": "6761bd59c054e39e3565827e"
-            },
-            "title": "Hand-Crafted Wooden Balance Transporter",
-            "description": "A minimalist wooden two-wheeler for toddlers learning to balance.",
-            "start_price": 40,
-            "reserve_price": 100,
-            "score": 1.1714285714285713
-        },
-        {
-            "_id": {
-                "$oid": "6761bd59c054e39e356582c6"
-            },
-            "title": "Walnut Mid-Century Console Table",
-            "description": "A sleek, walnut-finished console table with clean lines and retro charm.",
-            "start_price": 300,
-            "reserve_price": 600,
-            "score": 1.1555555555555554
-        },
-        {
-            "_id": {
-                "$oid": "6761bd59c054e39e356582c0"
-            },
-            "title": "Solid Oak Dining Set",
-            "description": "Includes a dining table and six matching chairs built from solid oak for durability and style.",
-            "start_price": 500,
-            "reserve_price": 900,
-            "score": 0.5454545454545454
+            "_id": "6761bd59c054e39e3565827f",
+            "title": "Electric-Powered Trike for Seniors",
+            "description": "Comfortable electric three-wheeler with pedal assist for easy mobility.",
+            "start_price": 700,
+            "reserve_price": 1400,
+            "score": 0.625
         }
     ],
-    "count": 14,
-    "query": "wooden table",
+    "count": 3,
+    "query": "trike",
     "mode": "mongo"
 }
 ```
 
 - Semantic Search:
 
-  - API endpoint for semantic search:
+  - API endpoint for semantic search (finds semantic matches, trike, tricycle, three-wheeler):
 
 ```text
-GET http://localhost:3337/api/search?q=wooden%20table&n=20&m=semantic
+GET http://localhost:3337/api/search?q=trike&n=20&m=semantic
 ```
 
 ```bash
 curl -X GET -G \
   "http://localhost:3337/api/search" \
-  -d "q=wooden+table" \
+  -d "q=trike" \
   -d "n=20" \
   -d "m=semantic" | jq '.'
 ```
@@ -372,171 +256,170 @@ curl -X GET -G \
 {
     "items": [
         {
-            "_id": "6761bd59c054e39e35658248",
-            "title": "Vintage Wooden Table",
-            "description": "A beautifully crafted wooden table, perfect for your dining room.",
+            "_id": "6761bd59c054e39e3565827a",
+            "title": "Kid's Training Trike",
+            "description": "A colorful and stable three-wheeled ride for young learners.",
+            "start_price": 50,
+            "reserve_price": 120,
+            "score": 0.7148431
+        },
+        {
+            "_id": "6761bd59c054e39e3565827f",
+            "title": "Electric-Powered Trike for Seniors",
+            "description": "Comfortable electric three-wheeler with pedal assist for easy mobility.",
+            "start_price": 700,
+            "reserve_price": 1400,
+            "score": 0.68524075
+        },
+        {
+            "_id": "6761bd59c054e39e356582ba",
+            "title": "Children's Trike",
+            "description": "Fun and safe tricycle for toddlers, with a sturdy frame and basket.",
+            "start_price": 60,
+            "reserve_price": 120,
+            "score": 0.68407923
+        },
+        {
+            "_id": "6761bd59c054e39e3565829f",
+            "title": "Adult Tricycle",
+            "description": "Stable and easy-to-ride three-wheeled bike with a cargo basket.",
+            "start_price": 300,
+            "reserve_price": 600,
+            "score": 0.66994584
+        },
+        {
+            "_id": "6761bd59c054e39e35658291",
+            "title": "Rugged Tricycle Hauler",
+            "description": "Heavy-duty three-wheeler built for carrying cargo on stable wheels.",
+            "start_price": 550,
+            "reserve_price": 1100,
+            "score": 0.6541539
+        },
+        {
+            "_id": "6761bd59c054e39e35658271",
+            "title": "Three-Wheel Adult Cruiser",
+            "description": "Comfortable three-wheeler designed for stable and smooth rides.",
+            "start_price": 350,
+            "reserve_price": 700,
+            "score": 0.64103293
+        },
+        {
+            "_id": "6761bd59c054e39e35658276",
+            "title": "Retro Three-Wheel Cruiser",
+            "description": "Stylish three-wheeler with a vintage aesthetic for leisurely commutes.",
+            "start_price": 400,
+            "reserve_price": 800,
+            "score": 0.6405463
+        },
+        {
+            "_id": "6761bd59c054e39e35658283",
+            "title": "Three-Wheel Cargo Carrier",
+            "description": "A sturdy three-wheeler with extra space for hauling groceries or goods.",
+            "start_price": 500,
+            "reserve_price": 1000,
+            "score": 0.61973
+        },
+        {
+            "_id": "6761bd59c054e39e35658287",
+            "title": "Cargo-Ready Three-Wheeler",
+            "description": "A practical and durable transporter with a large rear compartment.",
+            "start_price": 400,
+            "reserve_price": 800,
+            "score": 0.5701764
+        },
+        {
+            "_id": "6761bd59c054e39e3565828b",
+            "title": "Luxury Tandem Cruiser",
+            "description": "A sleek two-seater designed for couples looking for smooth rides.",
+            "start_price": 700,
+            "reserve_price": 1400,
+            "score": 0.5161332
+        },
+        {
+            "_id": "6761bd59c054e39e35658285",
+            "title": "Chopper-Style Two-Wheeler",
+            "description": "An elongated ride with a chopper-inspired frame for a unique cruising experience.",
+            "start_price": 300,
+            "reserve_price": 700,
+            "score": 0.5102613
+        },
+        {
+            "_id": "6761bd59c054e39e3565829d",
+            "title": "Unicycle",
+            "description": "High-quality unicycle, perfect for beginners and performers.",
+            "start_price": 70,
+            "reserve_price": 150,
+            "score": 0.4698544
+        },
+        {
+            "_id": "6761bd59c054e39e356582bb",
+            "title": "Bike Trailer for Kids",
+            "description": "Two-seat bike trailer for safely towing kids on bike rides.",
+            "start_price": 150,
+            "reserve_price": 300,
+            "score": 0.4591624
+        },
+        {
+            "_id": "6761bd59c054e39e35658286",
+            "title": "High-Performance Unicycle",
+            "description": "Sturdy single-wheeler built for skill development and advanced riders.",
+            "start_price": 120,
+            "reserve_price": 250,
+            "score": 0.45850718
+        },
+        {
+            "_id": "6761bd59c054e39e35658299",
+            "title": "Kids' Balance Bike",
+            "description": "Beginner-friendly pushbike to help toddlers learn balance and coordination.",
             "start_price": 50,
             "reserve_price": 100,
-            "score": 0.80172104
+            "score": 0.45088845
         },
         {
-            "_id": "6761bd59c054e39e356582c3",
-            "title": "Plywood Nordic Dining Table",
-            "description": "Minimalist dining table with a smooth plywood surface and contemporary design.",
-            "start_price": 220,
-            "reserve_price": 450,
-            "score": 0.65036666
+            "_id": "6761bd59c054e39e35658290",
+            "title": "Electric Cargo Hauler",
+            "description": "Battery-powered two-wheeler with a sturdy rear compartment for deliveries.",
+            "start_price": 900,
+            "reserve_price": 1800,
+            "score": 0.44730467
         },
         {
-            "_id": "6761bd59c054e39e356582bd",
-            "title": "Rustic Pine Farmhouse Table",
-            "description": "A charming farmhouse dining table crafted from solid pine with natural grain details.",
-            "start_price": 150,
-            "reserve_price": 300,
-            "score": 0.639088
+            "_id": "6761bd59c054e39e3565828f",
+            "title": "Recumbent Touring Rig",
+            "description": "Long-distance touring machine designed for ultimate comfort.",
+            "start_price": 800,
+            "reserve_price": 1600,
+            "score": 0.44403493
         },
         {
-            "_id": "6761bd59c054e39e356582ce",
-            "title": "Reclaimed Barn Door Table",
-            "description": "Rustic dining table created from a reclaimed barn door with a natural finish.",
+            "_id": "6761bd59c054e39e356582a3",
+            "title": "Bike Cargo Trailer",
+            "description": "Sturdy cargo trailer for transporting goods with your bicycle.",
+            "start_price": 120,
+            "reserve_price": 250,
+            "score": 0.44290248
+        },
+        {
+            "_id": "6761bd59c054e39e35658281",
+            "title": "Dirt-Ready Trail Crusher",
+            "description": "Tough trail ride with reinforced suspension for dirt paths.",
             "start_price": 450,
             "reserve_price": 900,
-            "score": 0.6351471
+            "score": 0.44034582
         },
         {
-            "_id": "6761bd59c054e39e356582ca",
-            "title": "Polished Burlwood Accent Table",
-            "description": "Unique table crafted from burlwood with natural knots and polished finish.",
-            "start_price": 250,
-            "reserve_price": 500,
-            "score": 0.62416315
-        },
-        {
-            "_id": "6761bd59c054e39e356582cc",
-            "title": "Acacia Nesting Tables",
-            "description": "Set of three stylish nesting tables crafted from acacia hardwood.",
-            "start_price": 180,
-            "reserve_price": 400,
-            "score": 0.59080744
-        },
-        {
-            "_id": "6761bd59c054e39e356582c0",
-            "title": "Solid Oak Dining Set",
-            "description": "Includes a dining table and six matching chairs built from solid oak for durability and style.",
-            "start_price": 500,
-            "reserve_price": 900,
-            "score": 0.5873027
-        },
-        {
-            "_id": "6761bd59c054e39e356582da",
-            "title": "Plywood Office Desk",
-            "description": "Modern, lightweight desk with a polished plywood surface and minimalist design.",
-            "start_price": 180,
-            "reserve_price": 350,
-            "score": 0.5825113
-        },
-        {
-            "_id": "6761bd59c054e39e356582e2",
-            "title": "Walnut Veneer Coffee Table",
-            "description": "Sophisticated coffee table with a rich walnut veneer finish.",
-            "start_price": 180,
-            "reserve_price": 400,
-            "score": 0.5811514
-        },
-        {
-            "_id": "6761bd59c054e39e356582c6",
-            "title": "Walnut Mid-Century Console Table",
-            "description": "A sleek, walnut-finished console table with clean lines and retro charm.",
-            "start_price": 300,
-            "reserve_price": 600,
-            "score": 0.58035314
-        },
-        {
-            "_id": "6761bd59c054e39e356582c7",
-            "title": "Driftwood-Inspired Coffee Table",
-            "description": "Artistic coffee table designed to resemble natural driftwood for a beachy aesthetic.",
-            "start_price": 150,
-            "reserve_price": 350,
-            "score": 0.57912564
-        },
-        {
-            "_id": "6761bd59c054e39e356582df",
-            "title": "Polished Teak Side Table",
-            "description": "Compact teakwood side table with a sleek polished surface.",
-            "start_price": 200,
-            "reserve_price": 400,
-            "score": 0.5756091
-        },
-        {
-            "_id": "6761bd59c054e39e356582cb",
-            "title": "Solid Timber Workbench",
-            "description": "Heavy-duty workbench perfect for woodworking or garage projects.",
-            "start_price": 300,
-            "reserve_price": 600,
-            "score": 0.5736216
-        },
-        {
-            "_id": "6761bd59c054e39e356582c8",
-            "title": "Hardwood Patio Bench",
-            "description": "Durable outdoor bench built from weather-resistant hardwood materials.",
-            "start_price": 200,
-            "reserve_price": 400,
-            "score": 0.555102
-        },
-        {
-            "_id": "6761bd59c054e39e356582d1",
-            "title": "Industrial Pallet Coffee Table",
-            "description": "Repurposed pallet table with a raw, industrial look and caster wheels.",
-            "start_price": 120,
-            "reserve_price": 300,
-            "score": 0.55241585
-        },
-        {
-            "_id": "6761bd59c054e39e3565827e",
-            "title": "Hand-Crafted Wooden Balance Transporter",
-            "description": "A minimalist wooden two-wheeler for toddlers learning to balance.",
-            "start_price": 40,
-            "reserve_price": 100,
-            "score": 0.53825504
-        },
-        {
-            "_id": "6761bd59c054e39e356582c2",
-            "title": "Recovered Timber Hall Stand",
-            "description": "Sustainable hall stand crafted from reclaimed timber with rustic appeal.",
-            "start_price": 150,
-            "reserve_price": 300,
-            "score": 0.534033
-        },
-        {
-            "_id": "6761bd59c054e39e356582be",
-            "title": "Antique Kauri Writing Desk",
-            "description": "Elegant kauri timber desk with intricate carvings and vintage hardware.",
-            "start_price": 200,
-            "reserve_price": 400,
-            "score": 0.5260058
-        },
-        {
-            "_id": "6761bd59c054e39e356582d3",
-            "title": "Scandinavian Birch Nightstand",
-            "description": "Minimalist birch nightstand with clean lines and natural hues.",
-            "start_price": 100,
-            "reserve_price": 250,
-            "score": 0.52013165
-        },
-        {
-            "_id": "6761bd59c054e39e356582bf",
-            "title": "Handcrafted Rimu Coffee Table",
-            "description": "A stunning low-profile coffee table made from recovered rimu timber.",
-            "start_price": 180,
-            "reserve_price": 350,
-            "score": 0.5197228
+            "_id": "6761bd59c054e39e3565827d",
+            "title": "Fat Tire Off-Roader",
+            "description": "Built to conquer rough terrains with oversized wheels for stability.",
+            "start_price": 600,
+            "reserve_price": 1200,
+            "score": 0.4401132
         }
     ],
     "count": 20,
-    "query": "wooden table",
+    "query": "trike",
     "mode": "semantic"
-}
-```
+}```
 
 ###Testing Coverage
 
