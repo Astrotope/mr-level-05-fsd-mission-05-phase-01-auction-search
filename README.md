@@ -154,6 +154,7 @@ node src/seed.js -f datasets/auction-items.json --verbose # Seed MongoDB
 
 # run tests
 npm test # Run tests
+RUN_INTEGRATION_TESTS=true npm test # Run Integration Tests with MongoDB using Test Containers
 ```
 
 ### Running the Search API
@@ -176,6 +177,7 @@ node scripts/generate-embeddings.js # Generate aution item embeddings in Qdrant 
 
 # Run tests and start server
 npm test # Run tests
+RUN_INTEGRATION_TESTS=true npm test # Run Integration Tests with MongoDB using Test Containers
 npm start # Start the server
 ```
 
