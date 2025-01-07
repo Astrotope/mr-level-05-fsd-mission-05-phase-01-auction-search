@@ -52,7 +52,7 @@ A modern search API implementing both MongoDB text search and semantic search vi
 
 ## Environment Variables
 
-### CLI Tool
+### CLI Tool - ./cli-tool/.env
 ```env
 MONGO_USERNAME=admin
 MONGO_PASSWORD=password
@@ -63,7 +63,7 @@ DB_NAME=auction
 COLLECTION_NAME=auctionItems
 ```
 
-### Search API
+### Search API - ./search-api/.env
 ```env
 MONGO_USERNAME=admin
 MONGO_PASSWORD=password
@@ -88,7 +88,8 @@ auction-search/
 │   ├── test/                   # Test files
 │   ├── datasets/               # Sample JSON data
 │   ├── docker-compose.yml      # MongoDB container config
-│   └── package.json            # Dependencies
+│   ├── package.json            # Dependencies
+│   └── .env                    # Environment Variables for CLI Tool
 │
 ├── search-api/                  # Search API service
 │   ├── src/
@@ -100,7 +101,8 @@ auction-search/
 │   │   └── generate-embeddings.js # Vector generation
 │   ├── test/                  # Test files
 │   ├── docker-compose.yml     # Qdrant container config
-│   └── package.json           # Dependencies
+│   ├── package.json           # Dependencies
+│   └── .env                    # Environment Variables for Auction Search API
 │
 └── docs/                       # Project documentation
     ├── DEV_NOTES.md           # This file
@@ -127,16 +129,16 @@ auction-search/
 
 ```
 # Clone the repository
-git clone https://github.com/your-username/auction-search.git
+git clone https://github.com/Astrotope/mr-level-05-fsd-mission-05-phase-01-auction-search.git
 
 # Navigate to the project directory
-cd auction-search
+cd mr-level-05-fsd-mission-05-phase-01-auction-search
 
 # Navigiate to the CLI Tool directory
 cd cli-tool
 
 # Update a .env file with your MongoDB connection details
-nano .env
+nano .env # Add contents from environment variable section above for ./cli-tool/.env
 
 # Install dependencies
 npm install
@@ -161,7 +163,7 @@ cd ..
 cd search-api
 
 # Update a .env file with your MongoDB and Qdrant connection details
-nano .env
+nano .env  # Add contents from environment variable section above for ./search-api/.env
 
 # Install dependencies
 npm install
@@ -169,8 +171,8 @@ npm install
 # Spin up Qdrant, setup Qdrant collection, generate embeddings
 docker compose up -d # Spin up Qdrant
 npm run create-indexes # Create text indexes in MongoDB
-npm run setup-qdrant # Setup Qdrant collection
-npm run generate-embeddings # Generate aution item embeddings in Qdrant using Google Generative AI text-embedding-004 model
+node scripts/setup-qdrant.js # Setup Qdrant collectiocrss
+node scripts/generate-embeddings.js # Generate aution item embeddings in Qdrant using Google Generative AI text-embedding-004 model
 
 # Run tests and start server
 npm test # Run tests
